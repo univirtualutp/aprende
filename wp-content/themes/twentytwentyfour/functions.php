@@ -204,3 +204,13 @@ if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
 endif;
 
 add_action( 'init', 'twentytwentyfour_pattern_categories' );
+
+add_filter('woocommerce_rest_prepare_product_object', 'include_acf_fields_in_api_response', 10, 3);
+
+function include_acf_fields_in_api_response($response, $post, $request) {
+    $data = $response->get_data();
+	$acf_fields = get_fields($response->data['id']);
+    $data['acf'] = $acf_fields;
+    $response->set_data($data);
+    return $response;
+}

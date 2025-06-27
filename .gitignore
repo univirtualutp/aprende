@@ -11,6 +11,9 @@ wp-content/upgrade/
 *.bak
 *.swp
 .DS_Store
+*.ini
+*.conf
 
 # Archivos de configuración del servidor
 .htaccess
+.git/
